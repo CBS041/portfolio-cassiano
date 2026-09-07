@@ -1,10 +1,19 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 import * as Dialog from '@radix-ui/react-dialog'
 import { XIcon } from '@phosphor-icons/react'
+import { useQuery } from '@tanstack/react-query'
 
 import { ProjectLinks } from './ui/project-links'
+
+type RepositoryAnalysis = {
+  description: string
+  features: string[]
+  architecture: string
+  technologies: string[]
+}
 
 type ProjectDialogProps = {
   name: string
@@ -21,6 +30,24 @@ export function ProjectDialog({
   githubUrl,
   imageUrl
 }: ProjectDialogProps) {
+  const [open, setOpen] = useState(false)
+
+  const { data: analysis, isLoading: isAnalysisLoading } =
+    useQuery<RepositoryAnalysis>({
+      queryKey: ['repository-analysis', name],
+      queryFn: async () => {
+        const res = await fetch(`/api/github/${encodeURIComponent(name)}/analysis`)
+
+        if (!res.ok) {
+          throw new Error('Não foi possível analisar o repositório')
+        }
+
+        return res.json()
+      },
+      enabled: open,
+      staleTime: 1000 * 60 * 60 * 24
+    })
+
   // Formata o nome do repo (ex: "webhook-inspector" -> "Webhook Inspector")
   const formattedName = name
     .split('-')
@@ -28,7 +55,7 @@ export function ProjectDialog({
     .join(' ')
 
   return (
-    <Dialog.Root>
+    <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
         {/* Adicionado: flex flex-col h-full para forçar altura igual no grid */}
         <article className="group cursor-pointer flex flex-col h-full rounded-lg border border-zinc-800 bg-zinc-950 p-4 transition hover:border-zinc-700">
@@ -87,20 +114,27 @@ export function ProjectDialog({
           </div>
 
           <p className="mt-4 text-sm text-zinc-400 leading-relaxed">
-            {description}
+            {analysis?.description ?? description}
           </p>
 
           <ul className="mt-4 space-y-2 text-sm text-zinc-400 list-disc list-inside">
-            <li>Captura e armazenamento de webhooks em tempo real</li>
-            <li>Visualização detalhada de payloads HTTP</li>
-            <li>Geração automática de handlers com IA</li>
-            <li>Arquitetura moderna e escalável</li>
+            {isAnalysisLoading && <li>Analisando o repositório com IA...</li>}
+
+            {!isAnalysisLoading && analysis?.features?.map(feature => (
+              <li key={feature}>{feature}</li>
+            ))}
+
+            {!isAnalysisLoading && !analysis && (
+              <li>Não foi possível carregar a análise técnica deste projeto.</li>
+            )}
           </ul>
 
           <div className="mt-4 flex flex-wrap gap-2 text-xs text-zinc-500">
-            {topics.map(topic => (
-              <span key={topic}>{topic}</span>
-            ))}
+            {(analysis?.technologies?.length ? analysis.technologies : topics).map(
+              technology => (
+                <span key={technology}>{technology}</span>
+              )
+            )}
           </div>
 
           <div className="mt-6 flex justify-end">
