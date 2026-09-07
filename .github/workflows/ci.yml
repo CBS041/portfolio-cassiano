@@ -14,6 +14,14 @@ jobs:
     name: Code Quality
     runs-on: ubuntu-latest
 
+    env:
+      NEXT_PUBLIC_URL: https://cassiano.tech
+      NEXT_PUBLIC_AUTHOR_NAME: Cassiano
+      NEXT_PUBLIC_AUTHOR_EMAIL: cassianobrito446@gmail.com
+      NEXT_PUBLIC_AUTHOR_GITHUB: CBS041
+      NEXT_PUBLIC_AUTHOR_LINKEDIN: cassiano-b-santos
+      NEXT_PUBLIC_AUTHOR_WHATSAPP: ''
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
