@@ -1,7 +1,6 @@
 import { GithubGraphQLResponse, GithubRepo } from '@/lib/types'
 import { NextResponse } from 'next/server'
 
-const GITHUB_API_URL = 'https://api.github.com'
 const GITHUB_GRAPHQL_URL = 'https://api.github.com/graphql'
 
 const query = `
