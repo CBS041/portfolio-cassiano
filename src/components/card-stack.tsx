@@ -2,7 +2,6 @@ import type { Icon } from '@phosphor-icons/react'
 
 import { IconType } from 'react-icons'
 
-
 interface CardStackProps {
   label: string
   icon: Icon | IconType
