@@ -23,7 +23,7 @@ export function Header() {
             <span className="text-lg font-semibold text-zinc-100">
               cassiano.
             </span>
-            <span className="text-lg font-semibold text-zinc-600">dev</span>
+            <span className="text-lg font-semibold text-zinc-600">tech</span>
           </div>
 
           <nav className="hidden md:flex gap-6 text-sm text-zinc-400">
