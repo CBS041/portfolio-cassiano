@@ -1,3 +1,4 @@
+import { GithubRepo } from '@/lib/types'
 import { NextResponse } from 'next/server'
 
 export type GithubRepoData = {
@@ -9,21 +10,6 @@ export type GithubRepoData = {
   stargazers_count: number
   forks_count: number
   updated_at: string
-}
-
-type GithubRepo = {
-  id: number
-  name: string
-  html_url: string
-  description: string | null
-  language: string | null
-  topics: string[]
-  stargazers_count: number
-  forks_count: number
-  created_at: string
-  archived: boolean
-  fork: boolean
-  size: number
 }
 
 const GITHUB_API_URL = 'https://api.github.com'
@@ -41,7 +27,6 @@ export async function GET() {
       )
     }
 
-    // CORRIGIDO: Removido o "https://" duplicado antes de GITHUB_API_URL
     const response = await fetch(
       `${GITHUB_API_URL}/users/${owner}/repos?per_page=100&sort=created&direction=desc`,
       {

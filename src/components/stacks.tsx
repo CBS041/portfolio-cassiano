@@ -2,7 +2,7 @@ import { CardStack } from './card-stack'
 import { StackSection } from './stack-section'
 import { StackAccordion } from './stack-accordion'
 
-import { FaReact } from 'react-icons/fa6'
+import { FaBrain, FaReact } from 'react-icons/fa6'
 
 import { CubeIcon } from '@phosphor-icons/react'
 import {
@@ -64,6 +64,7 @@ export function Stacks() {
         <StackSection title="Learning">
           <CardStack icon={SiGo} label="Go (Golang)" />
           <CardStack icon={SiPython} label="Python" />
+          <CardStack icon={FaBrain} label="IA" />
           <CardStack icon={SiFigma} label="Figma" />
         </StackSection>
       </div>

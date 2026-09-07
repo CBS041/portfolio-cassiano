@@ -29,7 +29,6 @@ export default function Home() {
             </h2>
 
             <div className="grid gap-6 mt-4 sm:grid-cols-2 lg:grid-cols-3">
-              {/* Projects Here */}
               <Projects />
             </div>
           </section>

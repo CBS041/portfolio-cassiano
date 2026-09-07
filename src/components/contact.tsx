@@ -1,3 +1,5 @@
+'use client'
+
 import {
   GithubLogoIcon as Github,
   LinkedinLogoIcon as Linkedin,

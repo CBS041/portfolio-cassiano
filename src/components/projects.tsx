@@ -3,14 +3,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { BeatLoader } from 'react-spinners'
 import { ProjectDialog } from './project-dialog'
-
-type GithubRepo = {
-  id: number
-  name: string
-  html_url: string
-  description: string | null
-  topics: string[]
-}
+import { GithubRepo } from '@/lib/types'
 
 export function Projects() {
   const { data: repositories, isLoading } = useQuery<GithubRepo[]>({
