@@ -4,12 +4,7 @@ import { Profile } from '@/components/profile'
 import { Projects } from '@/components/projects/projects'
 import { Stacks } from '@/components/stacks/stacks'
 
-async function delay(ms: number) {
-  await new Promise(resolve => setTimeout(resolve, ms))
-}
-
 export default async function Home() {
-  await delay(5000)
   return (
     <>
       <div className="min-h-screen pt-24">
