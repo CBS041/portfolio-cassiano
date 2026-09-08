@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
-import { StackAccordion } from '@/components/stack-accordion'
-import { StackSection } from '@/components/stack-section'
+import { StackAccordion } from '@/components/stacks/stack-accordion'
+import { StackSection } from '@/components/stacks/stack-section'
 
 describe('StackSection', () => {
   it('renders collapsed by default', () => {
