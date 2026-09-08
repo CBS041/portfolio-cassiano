@@ -1,3 +1,5 @@
+'use client'
+
 import { CardStack } from './card-stack'
 import { StackSection } from './stack-section'
 import { StackAccordion } from './stack-accordion'

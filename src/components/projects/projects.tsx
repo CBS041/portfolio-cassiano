@@ -1,8 +1,9 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { BeatLoader } from 'react-spinners'
 import { ProjectDialog } from './project-dialog'
+import { ProjectCardSkeleton } from './project-card-skeleton'
+
 import { GithubRepo } from '@/lib/types'
 
 export function Projects() {
@@ -16,12 +17,13 @@ export function Projects() {
     staleTime: 1000 * 60 * 60
   })
 
-  // Evita quebre de layout enquanto o TanStack Query busca os dados
   if (isLoading) {
     return (
-      <div className="col-span-full py-10 text-center text-sm text-zinc-500">
-        <BeatLoader color="#52525C" />
-      </div>
+      <>
+        {Array.from({ length: 6 }).map((_, index) => (
+          <ProjectCardSkeleton key={index} />
+        ))}
+      </>
     )
   }
 

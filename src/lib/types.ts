@@ -46,3 +46,8 @@ export type GithubGraphQLResponse = {
     message: string
   }>
 }
+
+export interface AccordionContextType {
+  openTitle: string | null
+  setOpenTitle: (title: string | null) => void
+}

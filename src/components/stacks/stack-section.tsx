@@ -1,8 +1,8 @@
 'use client'
 
-import { useContext, useEffect, type ReactNode } from 'react' // Importe o useEffect
+import { useContext, useEffect, type ReactNode } from 'react'
 import { CaretDownIcon } from '@phosphor-icons/react'
-import { AccordionContext } from '@/components/stack-accordion'
+import { AccordionContext } from '@/contexts/stack-context'
 
 interface StackSectionProps {
   title: string
@@ -24,7 +24,6 @@ export function StackSection({
   const { openTitle, setOpenTitle } = context
   const open = openTitle === title
 
-  // ✅ CORRETO: Usa o useEffect para atualizar o estado após o render
   useEffect(() => {
     if (defaultOpen && openTitle === null) {
       setOpenTitle(title)

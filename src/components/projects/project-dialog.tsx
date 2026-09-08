@@ -6,7 +6,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { XIcon } from '@phosphor-icons/react'
 import { useQuery } from '@tanstack/react-query'
 
-import { ProjectLinks } from './ui/project-links'
+import { ProjectLinks } from '../ui/project-links'
 import { BeatLoader } from 'react-spinners'
 
 type RepositoryAnalysis = {
@@ -63,7 +63,6 @@ export function ProjectDialog({
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        {/* Adicionado: flex flex-col h-full para forçar altura igual no grid */}
         <article className="group cursor-pointer flex flex-col h-full rounded-lg border border-zinc-800 bg-zinc-950 p-4 transition hover:border-zinc-700">
           <div className="mb-4 overflow-hidden rounded-md border border-zinc-800 shrink-0">
             <Image

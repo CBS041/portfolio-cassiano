@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { QueryProvider } from '@/components/query-provider'
+import { QueryProvider } from '@/providers/query-provider'
 import { Inter } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import { Analytics } from '@vercel/analytics/next'

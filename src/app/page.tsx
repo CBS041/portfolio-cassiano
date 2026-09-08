@@ -1,12 +1,15 @@
-'use client'
-
 import { Contact } from '@/components/contact'
 import { Header } from '@/components/header'
 import { Profile } from '@/components/profile'
-import { Projects } from '@/components/projects'
-import { Stacks } from '@/components/stacks'
+import { Projects } from '@/components/projects/projects'
+import { Stacks } from '@/components/stacks/stacks'
 
-export default function Home() {
+async function delay(ms: number) {
+  await new Promise(resolve => setTimeout(resolve, ms))
+}
+
+export default async function Home() {
+  await delay(5000)
   return (
     <>
       <div className="min-h-screen pt-24">
