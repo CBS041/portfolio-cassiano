@@ -2,7 +2,7 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   experimental: {
-    optimizePackageImports: ['@phosphor-icons/react', 'react-spinners']
+    optimizePackageImports: ['@phosphor-icons/react']
   },
   poweredByHeader: false,
   images: {
